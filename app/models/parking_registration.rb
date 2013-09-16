@@ -15,7 +15,13 @@ class ParkingRegistration < ActiveRecord::Base
 
   def park
     self.parked_on = Date.today
-    save
+
+    if ParkingRegistration.find_by( spot_number: spot_number ) == nil
+      save
+    else
+      errors.add(:spot_number, 'is already taken')
+      false
+    end
   end
 
 end

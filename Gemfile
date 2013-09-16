@@ -54,4 +54,4 @@ group :test, :development do
   gem 'launchy'
 end
 
-
+gem 'simple_form'

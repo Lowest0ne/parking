@@ -1,0 +1,44 @@
+.simple_form {
+
+  border-radius: 8px;
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid #999999;
+
+  label {
+    display: inline-block;
+    width: 110px;
+  }
+
+  .input {
+    margin: 0.25em;
+  }
+
+  .button {
+    width: 100%;
+    border: 1px solid #999999;
+  }
+
+}
+
+.form_container {
+  border-radius: 8px;
+  padding: 4px;
+  display: inline-block;
+  border: 1px solid #999999;
+  background-color: #DDDDDD;
+}
+
+.form_title {
+  border-radius: 8px;
+  margin: 8px;
+  text-align: center;
+  border: 1px solid #999999;
+}
+
+.form_errors {
+  border-radius: 8px;
+  margin: 8px;
+  border: 1px solid #999999;
+}
+

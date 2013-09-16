@@ -1,0 +1,19 @@
+<div class="form_container">
+  <div class="form_title">
+    <h3>Parking Registration</h3>
+  </div>
+  <%= simple_form_for @parking_registration do | form | %>
+    <%= form.input :first_name %>
+    <%= form.input :last_name %>
+    <%= form.input :email %>
+    <%= form.input :spot_number, type: :numerical, error: false  %>
+    <%= form.button :submit, 'Register' %>
+  <% end %>
+  <% if @parking_registration.errors.full_messages.size > 0 %>
+    <ul class="form_errors">
+      <% @parking_registration.errors.full_messages.each do | message | %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<%= form_for @parking_registration do | form | %>
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <%= form.label :spot_number %>
+  <%= form.text_field :spot_number %>
+  <%= form.submit 'Register' %>
+<% end %>

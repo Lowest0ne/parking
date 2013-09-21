@@ -1,6 +1,6 @@
 Parking::Application.routes.draw do
 
-  resources :parking_registrations, only: [ :create ]
+  resources :parking_registrations, only: [ :create, :show ]
 
   root 'parking_registrations#new'
 

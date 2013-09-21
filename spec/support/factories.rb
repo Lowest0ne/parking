@@ -3,7 +3,7 @@ FactoryGirl.define do
     first_name  'John'
     last_name   'Smith'
     email       'user@example.com'
-    spot_number 5
+    spot_number 1
     parked_on { Date.today }
   end
 end

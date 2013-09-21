@@ -1,0 +1,9 @@
+<p><%= "You are parked at spot number: #{@parking_registration.spot_number}" %></p>
+
+<% if @neighbors.count > 0 %>
+  <p>Your neighbors are:</p>
+  <%= render partial: "parking_registration", collection: @neighbors %>
+<% else %>
+  <p>You have no neighbors</p>
+<% end %>
+

@@ -8,10 +8,15 @@ class ParkingRegistrationsController < ApplicationController
 
     if @parking_registration.park
       flash[:notice] = 'You registered successfully'
-      redirect_to root_path
+      redirect_to parking_registration_path( @parking_registration )
     else
       render :new
     end
+  end
+
+  def show
+    @parking_registration = ParkingRegistration.find( params[:id] )
+    @neighbors = @parking_registration.neighbors
   end
 
   private

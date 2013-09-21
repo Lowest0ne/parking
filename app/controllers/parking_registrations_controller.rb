@@ -8,6 +8,7 @@ class ParkingRegistrationsController < ApplicationController
 
     if @parking_registration.park
       flash[:notice] = 'You registered successfully'
+      session[:user_id] = @parking_registration.id
       redirect_to parking_registration_path( @parking_registration )
     else
       render :new

@@ -5,7 +5,7 @@
   <%= simple_form_for @parking_registration do | form | %>
     <%= form.input :first_name %>
     <%= form.input :last_name %>
-    <%= form.input :email %>
+    <%= form.input :email, input_html: { value: current_email }  %>
     <%= form.input :spot_number, type: :numerical, error: false  %>
     <%= form.button :submit, 'Register' %>
   <% end %>

@@ -14,7 +14,7 @@ class ParkingRegistration < ActiveRecord::Base
     less_than_or_equal_to: 60
 
   def park
-    self.parked_on = Date.today
+    self.parked_on ||= Date.today
 
     if ParkingRegistration.is_available?( spot_number )
       save
@@ -45,5 +45,22 @@ class ParkingRegistration < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def spot_yesterday
+    ParkingRegistration.find_by(
+      "first_name = :first_name AND
+       last_name  = :last_name AND
+       email      = :email AND
+       parked_on  = :parked_on",
+       {
+         first_name: self.first_name,
+         last_name: self.last_name,
+         email: self.email,
+         parked_on: self.parked_on - 1
+       }
+    )
+  end
+
+
 
 end

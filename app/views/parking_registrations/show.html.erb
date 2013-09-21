@@ -1,4 +1,9 @@
 <p><%= "You are parked at spot number: #{@parking_registration.spot_number}" %></p>
+<% if @spot_yesterday %>
+  <p><%= "Yesterday you parked on spot ##{@spot_yesterday.spot_number}" %></p>
+<% else %>
+  <p>You did not park yesterday</p>
+<% end %>
 
 <% if @neighbors.count > 0 %>
   <p>Your neighbors are:</p>

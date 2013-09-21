@@ -18,6 +18,7 @@ class ParkingRegistrationsController < ApplicationController
   def show
     @parking_registration = ParkingRegistration.find( params[:id] )
     @neighbors = @parking_registration.neighbors
+    @spot_yesterday = @parking_registration.spot_yesterday
   end
 
   private

@@ -52,6 +52,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'launchy'
+  gem 'pry-rails'
 end
 
 gem 'simple_form'

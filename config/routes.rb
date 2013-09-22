@@ -4,6 +4,10 @@ Parking::Application.routes.draw do
 
   root 'parking_registrations#new'
 
+  namespace :parking_registrations do
+    resources :histories, only: [:show]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

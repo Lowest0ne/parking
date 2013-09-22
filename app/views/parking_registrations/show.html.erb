@@ -12,3 +12,7 @@
   <p>You have no neighbors</p>
 <% end %>
 
+<% if @parking_registration.repeat_parker? %>
+  <%= link_to parking_registration_history_path, 'View History' %>
+<% end %>
+

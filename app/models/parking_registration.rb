@@ -13,20 +13,11 @@ class ParkingRegistration < ActiveRecord::Base
     greater_than: 0,
     less_than_or_equal_to: 60
 
+  validate :available_spot
+
   def park
-    self.parked_on ||= Date.today
-
-    if ParkingRegistration.is_available?( spot_number )
-      save
-    else
-      errors.messages[:parked_on] ||= []
-      errors.messages[:parked_on] << 'Spot number is already taken'
-      false
-    end
-  end
-
-  def self.is_available? spot
-    ParkingRegistration.find_by( spot_number: spot, parked_on: Date.today ).nil?
+    self.parked_on = Date.today
+    save
   end
 
   def neighbors
@@ -38,29 +29,39 @@ class ParkingRegistration < ActiveRecord::Base
          above: self.spot_number + 1,
          parked_on: self.parked_on
       }).order( :spot_number ).to_a
-
-
   end
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
-  def spot_yesterday
-    ParkingRegistration.find_by(
+  def last_spot
+    ParkingRegistration.where(
       "first_name = :first_name AND
        last_name  = :last_name AND
-       email      = :email AND
-       parked_on  = :parked_on",
+       email      = :email",
        {
          first_name: self.first_name,
          last_name: self.last_name,
          email: self.email,
-         parked_on: self.parked_on - 1
        }
-    )
+    ).try(:last).try(:spot_number)
   end
 
+  def repeat_parker?
+    last_spot != nil
+  end
+
+  protected
+  def available_spot
+    return unless self.spot_number.present? &&
+                  self.parked_on.present?
+
+    if ParkingRegistration.find_by(spot_number: self.spot_number,
+                                   parked_on: self.parked_on )
+      errors.add( :spot_number, 'Spot number is already taken')
+    end
+  end
 
 
 end

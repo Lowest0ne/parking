@@ -45,11 +45,20 @@ class ParkingRegistration < ActiveRecord::Base
          last_name: self.last_name,
          email: self.email,
        }
-    ).try(:last).try(:spot_number)
+    ).last.try(:spot_number)
   end
 
   def repeat_parker?
-    last_spot != nil
+    ParkingRegistration.where(
+      "first_name = :first_name AND
+       last_name  = :last_name AND
+       email      = :email",
+       {
+         first_name: self.first_name,
+         last_name: self.last_name,
+         email: self.email,
+       }
+    ).count > 1
   end
 
   protected

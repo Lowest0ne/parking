@@ -13,6 +13,6 @@
 <% end %>
 
 <% if @parking_registration.repeat_parker? %>
-  <%= link_to parking_registration_history_path, 'View History' %>
+  <%= link_to 'View History', parking_registration_history_path(@parking_registration.id) %>
 <% end %>
 

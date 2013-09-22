@@ -4,7 +4,7 @@ Parking::Application.routes.draw do
 
   root 'parking_registrations#new'
 
-  namespace :parking_registrations do
+  namespace :parking_registration do
     resources :histories, only: [:show]
   end
 
